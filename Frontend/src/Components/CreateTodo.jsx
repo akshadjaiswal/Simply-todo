@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 export function CreateTodo() {
-  const { title, setTitle } = useState("");
-  const { description, setDescription } = useState("");
+  const [ title, setTitle ] = useState("");
+  const [ description, setDescription ] = useState("");
   return (
     <div
       style={{
