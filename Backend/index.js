@@ -7,14 +7,14 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors());
+
 app.post("/todo", async function (req, res) {
     const createPayload = req.body;
-    const parsePayload = createTodo.safeParse(createPayload)
-    if (!parsePayload.success) {
-        res.status(411).json({
+    const parsedPayload = createTodo.safeParse(createPayload)
+    if (!parsedPayload.success) {
+        return res.status(411).json({
             msg: "You sent a wrong inputs"
         })
-        return;
     }
     await todo.create({
         title: createPayload.title,
