@@ -55,7 +55,7 @@ export function CreateTodo() {
             },
           }).then(async function (res) {
             const json = await res.json();
-            alert("Todo Created");
+            alert("Todo Added");
           });
         }}
       >
