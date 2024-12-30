@@ -1,49 +1,26 @@
 import { useState } from "react";
 
 export function CreateTodo() {
-  const [ title, setTitle ] = useState("");
-  const [ description, setDescription ] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
-    <div
-      style={{
-        justifyContent: "center",
-        margin: "auto",
-      }}
-    >
+    <div className="flex flex-col items-center bg-gray-100 p-6 rounded-md shadow-md max-w-lg mx-auto">
       <input
-        style={{
-          padding: 10,
-          margin: 10,
-        }}
-        onChange={function (e) {
-          const value = e.target.value;
-          setTitle(value);
-        }}
+        className="w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        onChange={(e) => setTitle(e.target.value)}
         type="text"
-        placeholder="title"
+        placeholder="Enter Title"
       />
-      <br /> <br />
       <input
-        style={{
-          padding: 10,
-          margin: 10,
-        }}
-        onChange={function (e) {
-          const value = e.target.value;
-          setDescription(value);
-        }}
+        className="w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        onChange={(e) => setDescription(e.target.value)}
         type="text"
-        placeholder="description"
-      />{" "}
-      <br />
-      <br />
+        placeholder="Enter Description"
+      />
       <button
-        style={{
-          padding: 10,
-          margin: 10,
-        }}
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
         onClick={() => {
-          // axios
           fetch("http://localhost:3000/todo", {
             method: "POST",
             body: JSON.stringify({
@@ -53,7 +30,7 @@ export function CreateTodo() {
             headers: {
               "Content-Type": "application/json",
             },
-          }).then(async function (res) {
+          }).then(async (res) => {
             const json = await res.json();
             alert("Todo Added");
           });
